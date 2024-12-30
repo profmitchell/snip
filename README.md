@@ -17,6 +17,19 @@ A lightweight, menu bar note-taking application for macOS that helps you organiz
 - Custom note titles with easy editing
 - Settings panel with quick access to quit and app info
 
+## Roadmap / Brainstorm?
+
+- vec3 color swatches (GLSL)
+-import export notes and tabs
+- collapsabe notes?
+- image note compatibiliry
+- re orderable notes
+- resizable panel? (not sure this is even possible)
+- app shortcut launch via icons. (mini dock)
+- finder directory shortcurs (open desktop etc. )
+- run script capabiliry (ex: run python/other script to move loose files into new folders etc)
+
+
 ## Installation
 
 1. Download the latest release (.dmg file)
