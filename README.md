@@ -18,7 +18,8 @@ A lightweight, menu bar note-taking application for macOS that helps you organiz
 - Settings panel with quick access to quit and app info
 
 ## Roadmap / Brainstorm?
-
+- better documentation
+- run commands/macros? in general 
 - vec3 color swatches (GLSL)
 -import export notes and tabs
 - collapsabe notes?
