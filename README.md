@@ -1,7 +1,7 @@
 
 <img width="472" alt="Screenshot 2024-12-29 at 8 09 07 PM" src="https://github.com/user-attachments/assets/99d3a80d-ce79-4509-9b2d-79b473a768c9" />
 
-# Snip Notes
+# Snip
 
 A lightweight, menu bar note-taking application for macOS that helps you organize and manage your notes in different categories.
 
