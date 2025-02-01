@@ -1,7 +1,8 @@
 
-<img width="472" alt="Screenshot 2024-12-29 at 8 09 07 PM" src="https://github.com/user-attachments/assets/99d3a80d-ce79-4509-9b2d-79b473a768c9" />
+<img width="722" alt="Screenshot 2025-01-31 at 11 34 41 PM" src="https://github.com/user-attachments/assets/d95dff0d-0ef6-482f-a8f3-3052e45a0def" />
 
-DOWNLOAD: https://github.com/profmitchell/snip/releases
+
+DOWNLOAD:[ https://github.com/profmitchell/snip/releases](https://github.com/profmitchell/snip/releases/tag/V1.0)
 
 # Snip
 
