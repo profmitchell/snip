@@ -4,84 +4,164 @@
 
 DOWNLOAD:[ https://github.com/profmitchell/snip/releases](https://github.com/profmitchell/snip/releases/tag/V1.0)
 
+---
+
 # Snip
 
-A lightweight, menu bar note-taking application for macOS that helps you organize and manage your notes in different categories.
+**Snip** is a macOS menu bar application built with SwiftUI that lets you quickly manage and copy notes. It features organized categories, tabs, and notes with intuitive double–click renaming and state persistence. The app runs as a status item in the menu bar, keeping your workflow clutter–free while providing quick access to your notes.
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Accessibility Permissions](#accessibility-permissions)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+
+---
+
+## Overview
+
+**Snip** is designed for developers, writers, and anyone who needs to quickly copy snippets of text from organized notes. By running entirely from the menu bar, Snip provides a seamless, distraction–free environment for accessing your notes. Users can easily create, rename, reorder, and delete categories, tabs, and notes. The app also remembers the collapsed/expanded state of each note, ensuring your layout stays just the way you left it.
+
+---
 
 ## Features
 
-- Lives in your menu bar for quick access
-- Organize notes in customizable tabs
-- Sequential note naming (Note 1, Note 2, etc.)
-- Copy note contents with a single click
-- Automatically saves your notes
-- Minimal and clean interface
-- Runs in the background
-- Custom note titles with easy editing
-- Settings panel with quick access to quit and app info
+- **Menu Bar Application:**  
+  Runs as a status item in the macOS menu bar with a custom icon.
 
-## Roadmap / Brainstorm?
-- better documentation
-- run commands/macros? in general 
-- vec3 color swatches (GLSL)
--import export notes and tabs
-- collapsabe notes?
-- image note compatibiliry
-- re orderable notes
-- resizable panel? (not sure this is even possible)
-- app shortcut launch via icons. (mini dock)
-- finder directory shortcurs (open desktop etc. )
-- run script capabiliry (ex: run python/other script to move loose files into new folders etc)
+- **Notes Management:**  
+  - Create, edit, and copy notes quickly.
+  - Persisted note state (collapsed or expanded) across sessions.
+  - Double–click any note title to rename it instantly.
 
+- **Organizational Hierarchy:**  
+  - **Categories:** Group related tabs together.
+  - **Tabs:** Within each category, organize your notes further.
+  - **Notes:** Edit and copy text from individual note cards.
+
+- **Inline Renaming:**  
+  Double–click category names, tab names, or note titles to edit them directly.
+
+- **Reorderable Notes:**  
+  Drag and drop notes to rearrange them.
+
+- **Settings Screen:**  
+  - View developer information.
+  - Recheck accessibility permissions.
+  - Quit the app.
+
+- **Accessibility Permission Caching:**  
+  The app prompts for accessibility permission only on first launch (or when manually rechecked) and caches the result.
+
+---
+
+## Requirements
+
+- **macOS:** Version 10.15 (Catalina) or later (macOS Ventura recommended).
+- **Xcode:** 15 or later.
+- **SwiftUI:** Built using the SwiftUI lifecycle.
+- **Accessibility Permissions:** The app requires accessibility permissions to function (for text copying).
+
+---
 
 ## Installation
 
-1. Download the latest release (.dmg file)
-2. Open the DMG file
-3. Drag Snip Notes to your Applications folder
-4. Open Snip Notes from your Applications folder
-5. When prompted, allow the app to run
+1. **Clone the Repository:**
 
-### First-Time Setup
+   ```bash
+   git clone https://github.com/yourusername/Snip.git
+   cd Snip
+   ```
 
-When you first open Snip Notes, macOS might show a security prompt:
+2. **Open in Xcode:**
 
-1. If you see "Snip Notes cannot be opened because it is from an unidentified developer":
-   - Go to System Preferences > Security & Privacy
-   - Click the lock icon to make changes
-   - Click "Open Anyway"
+   Open the `Snip.xcodeproj` file in Xcode.
 
-2. The app will request permission to:
-   - Run as a menu bar app
-   - Save your notes locally
+3. **Configure Code Signing:**
+
+   Ensure your project’s code signing is properly configured in Xcode. If running in development, you may use your development team and provisioning profile.
+
+4. **Build and Run:**
+
+   Build and run the project (⌘R). The app will launch as a menu bar item.
+
+---
 
 ## Usage
 
-- Click the note icon in your menu bar to open Snip Notes
-- Create new tabs for different categories of notes
-- Add, edit, or delete notes within each tab
-- Click the copy button to copy note contents to your clipboard
-- Click outside the app to automatically hide it
-- Your notes are automatically saved
+- **Menu Bar Icon:**  
+  Click the Snip icon in the menu bar to open the popover window.
 
-## Building from Source
+- **Categories & Tabs:**  
+  - Use the sidebar to view and manage categories.  
+  - Double–click any category name to rename it.
+  - In the tabs area at the top of the popover, double–click a tab name to rename it.  
+  - Use the plus (`+`) and minus (`–`) buttons in the tabs area to add or delete tabs.
 
-If you want to build the app yourself:
+- **Notes:**  
+  - Create new notes within a tab using the plus button.
+  - Double–click a note title to rename it.
+  - Collapse or expand a note by clicking the chevron icon.
+  - Copy a note’s content by clicking the copy button (doc icon).
+  - Reorder notes by dragging them within the list.
 
-1. Clone the repository
-2. Open the project in Xcode
-3. Make sure you're signed in with your Apple ID in Xcode
-4. Build and run the project
+- **Settings:**  
+  Click the gear icon in the top–right to open the settings screen. From there, you can recheck accessibility permissions (if needed) or quit the app.
 
-## System Requirements
+---
 
-- macOS 11.0 (Big Sur) or later
-- About 10MB of disk space
+## Project Structure
 
-## Support
+- **SnipApp.swift:**  
+  The app’s entry point, including the AppDelegate. This file sets up the status bar item, manages accessibility permission caching, and launches the popover.
 
-For issues or feature requests, please create an issue in the GitHub repository.
+- **ContentView.swift:**  
+  Contains the main UI for Snip, including:
+  - Data models for Note, Tab, and Category.
+  - The sidebar for directories and categories.
+  - The main content area with tabs and notes.
+  - Custom views such as `EditableText` and `EditableTabView` for inline renaming.
+
+- **AppFileManager.swift:**  
+  A helper class for saving and loading the categories (and their associated tabs and notes) as JSON in the Application Support directory.
+
+---
+
+## Accessibility Permissions
+
+**Snip** requires accessibility permissions to copy text programmatically. The app checks and caches these permissions on first launch. If you need to revalidate the permissions, use the "Recheck Permissions" button in the Settings screen.  
+Ensure your app is properly signed to avoid repeated prompts.
+
+---
+
+## Contributing
+
+Contributions are welcome! If you have any ideas for improvements or bug fixes, please open an issue or submit a pull request. For major changes, please discuss them first via GitHub issues.
+
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature/YourFeature`).
+3. Commit your changes.
+4. Push your branch and open a pull request.
+
+---
 
 ## License
 
-MIT License - feel free to modify and reuse this code.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## Acknowledgements
+
+- Thank you o3-mini for your help!
+
+---
